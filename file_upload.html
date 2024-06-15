@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html land="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial=scale=10">
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    
+    <title>pyscript demos: image upload form</title>
+
+</head>
+
+<body>
+
+        <h1>py-script : how to read an image from local file system</h1>
+
+
+                <p>Upload a csv file</p>
+                 <ol>
+                     <li>
+                     <label for="upload">File Upload:</label>
+                    <input type="file" name="upload" id="upload">
+                     </li>
+                </ol>
+
+        <p id="content"></p>
+   
+
+<py-script>
+    import asyncio
+    import js
+    from js import document, FileReader
+    from pyodide import create_proxy
+
+    def read_complete(event):
+        
+        content=document.getElementById("content");
+        content.innerText = event.target.result 
+
+    async def process_file(x):
+        fileList = document.getElementById('upload').files
+
+        for f in fileList:
+            reader = FileReader.new()
+
+            onload_event = create_proxy(read_complete)
+
+           # console.log("done")
+
+            reader.onload = onload_event
+
+            reader.readAsText(f)
+
+        return
+
+    def main():
+        file_event = create_proxy(process_file)
+
+        e = document.getElementById("upload")
+        e.addEventListener("change", file_event, False)
+    
+    main()
+
+</py-script>
+
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
+
+<link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    
+    <title>Learn DOM for pyscript</title>
+
+</head>
+
+<body>
+
+    <h1>Learn DOM Manipulation using pyscript</h1>
+
+    <h2>Simple String Counter using Python</h2>
+
+    <br>
+    
+    <p>Input Text</p>
+    
+    <textarea name="input_text" id="input_text" placeholder="Enter your text...."></textarea>
+    
+    <br>
+
+    <button id="run" type="button" class="button is-primary" pys-onClick="count">Count</button>
+    <button id="clear" type="button" class="button is-danger" pys-onClick="clear">Clear</button>
+
+    <p>Output from Python</p>
+
+    <p id="output"></p>
+
+</body>
+
+<py-script>
+
+  input_text=Element('input_text')
+  op=Element('output')
+
+  def Clear(*args, **kwargs):
+      input_text.clear()
+  def Count(*args, **kwargs):
+      number = len(input_text.value)
+      op.write(number)
+
+</py-script>
+
+</html>

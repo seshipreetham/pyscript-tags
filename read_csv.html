@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    
+    <title>REad CSV using panda</title>
+
+<py-env>
+    -pandas
+<py-env>
+
+</head>
+
+<body>
+
+<h1>Read CSV with pandas using pyscript</h1>
+
+<p id="csv"></p>
+
+<py-script>
+
+        import pandas as pd
+
+        from pyodide.http import open_url
+
+        df=pd.read_csv(open_url("https://raw.githubusercontent.com/mwaskom/seaborn-data/master/diamond.csv"))
+
+        csv = Element('csv')
+
+        csv.write(df.shape)
+
+</py-script>
+
+</body>
+
+</html>
