@@ -1,1 +1,2 @@
-# displaying-numbers
+# pyscript-tags 
+# for direct python writing in html page 
